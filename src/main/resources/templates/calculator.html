@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>calculator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body bgcolor="#009933">
+
+<h1>Simple:</h1>
+<!--/*@thymesVar id="operationModel" type=""*/-->
+<form action="#" th:action="@{/calculator}" th:object="${operationModel}" method="POST">
+    <input type="text" th:field="*{num1}"/>
+    <input type="text" th:field="*{num2}"/>
+    <p>
+        <input type="submit" class="button" name="sum" value="+"/>
+        <input type="submit" class="button" name="subtraction" value="-"/>
+        <input type="submit" class="button" name="multiplication" value="*"/>
+        <input type="submit" class="button" name="division" value="/"/>
+<!--        <input type="submit" class="button" name="clearSimple" value="C"/>-->
+    </p>
+
+<!--    <h1>Advanced:</h1>-->
+<!--    <input type="text" th:field="*{c}"/>-->
+
+    <h1><p th:text="'result: ' + ${result}"/></h1>
+</form>
+</body>
+</html>
