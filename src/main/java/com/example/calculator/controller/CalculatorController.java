@@ -3,8 +3,9 @@ package com.example.calculator.controller;
 import com.example.calculator.model.dto.OperationModelDto;
 import com.example.calculator.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CalculatorController {
@@ -12,7 +13,7 @@ public class CalculatorController {
     @Autowired
     private CalculatorService calculatorService;
 
-    @PostMapping("/subtraction")
+    @PostMapping("/calculate")
     public String getCalc(@RequestBody OperationModelDto operationModel) {
         return calculatorService.calc(operationModel);
     }

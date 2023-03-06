@@ -1,4 +1,5 @@
 package com.example.calculator.model.dto;
+
 import lombok.*;
 
 @Getter
