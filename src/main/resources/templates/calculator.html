@@ -1,29 +1,47 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>calculator</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<form class="form-inline" th:action="@{/}" method="POST" xmlns:th="http://www.w3.org/1999/xhtml">
+    <fieldset>
+        <div class="form-group">
+            <div class="col-sm-1 ">
+                <input type="number" class="form-control" id="num1" placeholder="Number one"
+                       name="num1" th:value="${num1}"/>
+            </div>
+        </div>
 
-</head>
-<body bgcolor="#009933">
 
-<h1>Simple:</h1>
-<!--/*@thymesVar id="operationModel" type=""*/-->
-<form action="#" th:action="@{/calculator}" th:object="${operationModel}" method="POST">
-    <input type="text" th:field="*{num1}"/>
-    <input type="text" th:field="*{num2}"/>
-    <p>
-        <input type="submit" class="button" name="sum" value="+"/>
-        <input type="submit" class="button" name="subtraction" value="-"/>
-        <input type="submit" class="button" name="multiplication" value="*"/>
-        <input type="submit" class="button" name="division" value="/"/>
-<!--        <input type="submit" class="button" name="clearSimple" value="C"/>-->
-    </p>
+        <div class="form-group">
+            <div class="col-sm-4 ">
+                <select class="form-control" name="operator">
+                    <option value="+" th:selected="${operator.equals('+')}">+</option>
+                    <option value="-" th:selected="${operator.equals('-')}">-</option>
+                    <option value="*" th:selected="${operator.equals('*')}">*</option>
+                    <option value="/" th:selected="${operator.equals('/')}">/</option>
+                    <option value="^" th:selected="${operator.equals('^')}">^</option>
+                </select>
+            </div>
+        </div>
 
-<!--    <h1>Advanced:</h1>-->
-<!--    <input type="text" th:field="*{c}"/>-->
+        <div class="form-group">
+            <div class="col-sm-4 ">
+                <input type="number" class="form-control" id="num2" placeholder="Number two"
+                       name="num2" th:value="${num2}"/>
+            </div>
+        </div>
 
-    <h1><p th:text="'result: ' + ${result}"/></h1>
+        <div class="form-group">
+            <div class="col-sm-2 ">
+                <p>=</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 ">
+                <input type="text" class="form-control" id="result" placeholder="Result"
+                       name="result" th:value="${result}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </div>
+    </fieldset>
 </form>
-</body>
-</html>

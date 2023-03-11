@@ -3,9 +3,8 @@ package com.example.calculator.controller;
 import com.example.calculator.model.dto.OperationModelDto;
 import com.example.calculator.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CalculatorController {
@@ -14,8 +13,13 @@ public class CalculatorController {
     private CalculatorService calculatorService;
 
     @PostMapping("/calculate")
-    public String getCalc(@RequestBody OperationModelDto operationModel) {
-        return calculatorService.calc(operationModel);
+    public String getCalc(@Validated @RequestBody OperationModelDto operationModel) {
+        return calculatorService.mapCalc(operationModel);
+    }
+
+    @GetMapping("/calculate/{id}")
+    public @ResponseBody OperationModelDto getOperation(@PathVariable Long id){
+        return calculatorService.getOperation(id);
     }
 
 //    @GetMapping("/multiply")

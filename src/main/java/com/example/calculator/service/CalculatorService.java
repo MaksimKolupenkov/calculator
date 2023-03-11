@@ -4,6 +4,7 @@ import com.example.calculator.model.dto.OperationModelDto;
 
 public interface CalculatorService {
 
-    String calc(OperationModelDto operationModel);
+    String mapCalc(OperationModelDto operationModel);
+    OperationModelDto getOperation(Long id);
 
 }
